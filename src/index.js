@@ -17,18 +17,19 @@ ulEl.insertAdjacentHTML('beforeend', menuHtml);
 
 // localStorage
 body.classList.add(localStorage.getItem('bodyTheme'));
+checkEl.checked = localStorage.getItem('checkBox');
 
 if (body.classList.contains(null)) {
   body.classList.remove(null);
   body.classList.add(LIGHT);
   localStorage.setItem('bodyTheme', LIGHT);
+  localStorage.setItem('checkBox', (checkEl.checked = false));
 }
 
 //event listeners
-checkEl.addEventListener('click', e => {
+checkEl.addEventListener('click', () => {
   body.classList.toggle(DARK);
   body.classList.toggle(LIGHT);
   localStorage.setItem('bodyTheme', body.classList.value);
+  localStorage.setItem('checkBox', checkEl.checked);
 });
-
-console.log(checkEl.checked);
