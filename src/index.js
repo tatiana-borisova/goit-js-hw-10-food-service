@@ -16,10 +16,10 @@ const { LIGHT, DARK } = Theme;
 ulEl.insertAdjacentHTML('beforeend', menuHtml);
 
 // localStorage
-localStorage.setItem('checkBox', checkEl.checked);
 if (JSON.parse(localStorage.getItem('checkBox'))) {
   body.classList.add(DARK);
   body.classList.remove(LIGHT);
+  checkEl.checked = true;
 } else {
   body.classList.add(LIGHT);
   body.classList.remove(DARK);
