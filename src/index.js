@@ -16,20 +16,18 @@ const { LIGHT, DARK } = Theme;
 ulEl.insertAdjacentHTML('beforeend', menuHtml);
 
 // localStorage
-body.classList.add(localStorage.getItem('bodyTheme'));
-checkEl.checked = localStorage.getItem('checkBox');
-
-if (body.classList.contains(null)) {
-  body.classList.remove(null);
+localStorage.setItem('checkBox', checkEl.checked);
+if (JSON.parse(localStorage.getItem('checkBox'))) {
+  body.classList.add(DARK);
+  body.classList.remove(LIGHT);
+} else {
   body.classList.add(LIGHT);
-  localStorage.setItem('bodyTheme', LIGHT);
-  localStorage.setItem('checkBox', (checkEl.checked = false));
+  body.classList.remove(DARK);
 }
 
 //event listeners
 checkEl.addEventListener('click', () => {
   body.classList.toggle(DARK);
   body.classList.toggle(LIGHT);
-  localStorage.setItem('bodyTheme', body.classList.value);
   localStorage.setItem('checkBox', checkEl.checked);
 });
